@@ -15,6 +15,8 @@ float superpoder1, superpoder2;
 float result1, result2;
 int resultcomparacao;
 
+int escolhaDecisao; //USADA MAIS À FRENTE, PARA O MENU INTERATIVO.
+
 int main(){
 
         printf("*********** Olá! Vamos jogar SUPER TRUNFO! ***********\n *********** DIGITE AS INFORMAÇÕES PEDIDAS DAS SUAS 2 CARTAS! ***********\n");
@@ -42,7 +44,8 @@ int main(){
     scanf("%d", &pontostur1);
 
 
-    printf("RESULTADO CARTA 01: \nEstado: %c", estado1);
+    printf("*** RESULTADO CARTA 01: ***");
+    printf("\nEstado: %c", estado1);
     printf("\nCódigo: %s",codcarta1);
     printf("\nCidade: %s",cidade1);
     printf("\nPopulação: %ld",populacao1);                   // INFORMAÇÕES DA 1ª CARTA !!!
@@ -96,29 +99,93 @@ int main(){
     printf("\nDensidade Populacional: %.2f Hab/por km².", densipopula2);
 
         pibcapta2 = (pib2 / populacao2);                    // CALCULA PIB PER CAPITA (PIB / POPULAÇÃO)
-    printf("\nPIB per capita: %.2f reais.\n", pibcapta2);
+    printf("\nPIB per capita: %.2f reais.", pibcapta2);
 
         superpoder2 = ((populacao2 + area2 + pib2 + pontostur2 + pibcapta2) - densipopula2); // CALCULA O SUPERPODER DA CARTA
-    printf("\nValor do SUPER PODER: %.2f", superpoder2);
+    printf("\nValor do SUPER PODER: %.2f\n", superpoder2);
+    // ----- FIM DA SEGUNDA CARTA -----
 
 
-    printf("\n********** COMPARAÇÃO **********\n");
-    printf("\n** ATRIBUTO USADO: PIB PER CAPITA **\n");
+    // A SEGUIR O CÓDIGO USA SWITCH - CASE PARA COMPARAR AS CARTAS E DAR O RESULTADO FINAL
 
-    printf("Carta 1 - %s: %.2f reais.\n", cidade1, pibcapta1);
-    printf("Carta 2 - %s: %.2f reais.\n", cidade2, pibcapta2);
+    printf("*** AGORA VAMOS ESCOLHER: ***\n");
+    printf("*** QUAL ATRIBUTO SERÁ USADO PARA A COMPARAÇÃO? ***\n***ESCOLHA UM NÚMERO DE 1 à 6!***\n");
+    printf("1 - Nome do país (**APENAS NOMES, SEM COMPARAÇÃO!**)\n");
+    printf("2 - População\n");
+    printf("3 - Área\n");
+    printf("4 - PIB\n");
+    printf("5 - Número de pontos turísticos\n");
+    printf("6 - Densidade demográfica\n");
+    scanf("%d", &escolhaDecisao);
 
-        if( pibcapta1 > pibcapta2) {
+    switch (escolhaDecisao) 
+    {
 
-            printf("A CARTA 1 VENCE!");                     // COMPARA ATRIBUTO DE 2 CARTAS
+        case 1:
+            printf("Carta 1: %s - Carta 2: %s", cidade1, cidade2);
+        break;
 
-        }else {                                             // DEFINE A CARTA VENCEDORA
+        case 2:
+            if (populacao1 > populacao2) {
+                printf("A CARTA 1 VENCE COM A POPULAÇÃO DE: %d PESSOAS!\n", populacao1);
+            } else if (populacao1 < populacao2)
+            {
+                printf("A CARTA 2 VENCE COM A POPULAÇÃO DE: %d PESSOAS!\n", populacao2);
+            } else {
+                printf("***É UM EMPATE!***\n");
+            }
+        break;
 
-            printf("A CARTA 2 VENCE!");
-
+        case 3:
+            if (area1 > area2) {
+            printf("A CARTA 1 VENCE COM A ÁREA DE: %.2f KM²!\n", area1);
+        } else if (area1 < area2)
+        {
+            printf("A CARTA 2 VENCE COM A ÁREA DE: %.2f KM²!\n", area2);
+        } else {
+            printf("***É UM EMPATE!***\n");
         }
+        break;
 
-    printf("\n********** FIM DE JOGO **********");            // ----- FIM DA SEGUNDA CARTA -----
+        case 4:
+            if (pib1 > pib2) {
+            printf("A CARTA 1 VENCE COM O PIB DE: %.2f!\n", pib1);
+        } else if (pib1 < pib2)
+        {
+            printf("A CARTA 2 VENCE COM O PIB DE: %.2f!\n", pib2);
+        } else {
+            printf("***É UM EMPATE!***\n");
+        }
+        break;
+
+        case 5:
+            if (pontostur1 > pontostur2) {
+            printf("A CARTA 1 VENCE COM A QUANTIDADE DE: %d PONTOS TÚRISTICOS TOTAIS!\n", pontostur1);
+        } else if (pontostur1 < pontostur2)
+        {
+            printf("A CARTA 2 VENCE COM A QUANTIDADE DE: %d PONTOS TÚRISTICOS TOTAIS!\n", pontostur2);
+        } else {
+            printf("***É UM EMPATE!***\n");
+        }
+        break;
+
+        case 6:
+            if (densipopula1 < densipopula2) {
+            printf("A CARTA 1 VENCE COM A DENSIDADE POPULACIONAL DE: %.2f HAB/KM²!\n", densipopula1);
+        } else if (densipopula1 > densipopula2)
+        {
+            printf("A CARTA 2 VENCE COM A DENSIDADE POPULACIONAL DE: %.2f HAB/KM²!\n", densipopula2);
+        } else {
+            printf("***É UM EMPATE!***\n");
+        }
+        break;
+
+        default:
+            printf("*** OPÇÃO INVÁLIDA! ***\n");
+        break;
+    }
+
+    printf("\n********** FIM DE JOGO **********");
 
     return 0;
 }
