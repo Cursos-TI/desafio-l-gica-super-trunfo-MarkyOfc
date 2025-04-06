@@ -1,74 +1,85 @@
-# ⚠️ Importante!!!
-Você pode escolher qualquer um dos desafios para desenvolver. Sinta-se à vontade para começar pelo desafio que mais lhe interessa.
+🃏 Super Trunfo - Cidades e Estados
+Um jogo interativo de Super Trunfo baseado em cidades brasileiras. O usuário insere informações de duas "cartas" e escolhe atributos para comparar. O programa calcula os valores e determina qual carta vence com base na pontuação.
 
-# Desafio Super Trunfo - Países - Comparação das Cartas
+📦 Requisitos
+Compilador C (GCC recomendado)
 
-Bem-vindo ao desafio "Super Trunfo - Países"! Neste projeto, você desenvolverá um sistema para comparar cartas baseadas em atributos de cidades. O desafio é dividido em três níveis: Novato, Aventureiro e Mestre. Cada nível adiciona novas funcionalidades e complexidades, permitindo um aprendizado progressivo.
+Terminal ou console interativo
 
-## 🏅 Nível Novato
+⚙️ Como compilar
+Use o comando abaixo no terminal para compilar o programa:
 
-No nível Novato, você começará implementando a lógica básica de comparação entre cartas utilizando estruturas de decisão `if` e `if-else`.
+bash
+Copiar
+Editar
+gcc -o super_trunfo super_trunfo_logica\ copy.c
+Obs.: Renomeie o arquivo se necessário para evitar espaços no nome (ex: super_trunfo_logica.c).
 
-### 🚩 Objetivos:
-- **Cadastro de Cartas:** O sistema permitirá ao usuário cadastrar cartas de cidades, incluindo informações como estado, código da carta, nome da cidade, população, área, PIB e número de pontos turísticos.
-- **Comparação de Cartas:** O sistema comparará os atributos de duas cartas e determinará a vencedora com base em uma propriedade específica (população, área, PIB, etc.), escolhida no código.
-- **Exibição de Resultados:** Após a comparação, o sistema exibirá qual carta venceu com base na regra: maior valor vence, exceto em densidade populacional, onde o menor valor é o vencedor.
+▶️ Como executar
+Após a compilação, execute com:
 
-### 📥 Entrada de Dados:
-- Os dados das cartas serão inseridos manualmente via terminal.
-- O sistema solicitará interativamente as informações de cada carta.
+bash
+Copiar
+Editar
+./super_trunfo
+📝 Como jogar
+1. Inserção de dados
+Você será guiado para digitar informações de duas cartas. Para cada carta, você deverá fornecer:
 
-### 📤 Saída de Dados:
-- Após o cadastro, as propriedades da cidade serão exibidas de forma organizada.
-- O resultado da comparação será mostrado, indicando a carta vencedora.
+Letra do estado (de A a H)
 
----
+Código da carta (ex: A01, B03)
 
-## 🏅 Nível Aventureiro
+Nome da cidade
 
-No nível Aventureiro, você expandirá o sistema para incluir a comparação aninhada e a criação de um menu interativo usando `switch`.
+População
 
-### 🆕 Diferença em relação ao Nível Novato:
-- **Menu Interativo:** O usuário poderá escolher diferentes atributos para comparação através de um menu.
-- **Comparação Aninhada:** Implementação de lógica de comparação mais complexa, utilizando estruturas aninhadas para tomar decisões baseadas em múltiplos atributos.
+Área em km²
 
-### 🚩 Novas Funcionalidades:
-- **Cadastro de Cartas:** Similar ao nível Novato, com a adição de comparação de múltiplos atributos.
-- **Menu Interativo:** Uso de `switch` para criar um menu que permite ao jogador escolher os atributos a serem comparados.
-- **Exibição de Resultados:** O sistema exibirá o resultado da comparação, indicando qual carta venceu e qual atributo foi utilizado.
+PIB
 
----
+Quantidade de pontos turísticos
 
-## 🏅 Nível Mestre
+2. Atributos disponíveis para comparação
+Após inserir os dados das duas cartas, você escolherá dois atributos distintos para comparar entre elas:
 
-No nível Mestre, o desafio se intensifica com a adição de funcionalidades avançadas, como menus dinâmicos e lógica de decisão complexa com operadores ternários.
+java
+Copiar
+Editar
+1 - Nome da cidade (não é comparado numericamente)
+2 - População
+3 - Área
+4 - PIB
+5 - Número de pontos turísticos
+6 - Densidade demográfica
+❗ O atributo 1 (Nome da cidade) é apenas exibido, mas não afeta o resultado final.
 
-### 🆕 Diferença em relação ao Nível Aventureiro:
-- **Escolha de Dois Atributos:** O usuário poderá escolher dois atributos para comparação entre as cartas.
-- **Lógica de Decisão Complexa:** Implementação de estruturas de decisão aninhadas e encadeadas, além do uso de operadores ternários para determinar a carta vencedora.
-- **Menus Dinâmicos:** Os menus serão dinâmicos, permitindo uma navegação fluida entre as opções de comparação.
+3. Resultado
+O programa calcula a soma dos dois atributos escolhidos para cada carta e declara a vencedora com base na pontuação total.
 
-### 🚩 Novas Funcionalidades:
-- **Comparação de Dois Atributos:** O sistema comparará dois atributos simultaneamente para determinar a carta vencedora.
-- **Lógica Avançada:** Uso de operadores ternários e lógica aninhada para lidar com comparações complexas.
-- **Empates:** O sistema será capaz de lidar com empates, exibindo mensagens apropriadas.
-- **Exibição de Resultados:** Exibição dos resultados das comparações de forma clara e interativa.
+🧮 Fórmulas usadas
+Densidade populacional = população / área
 
----
+PIB per capita = PIB / população
 
-## 📋 Requisitos Funcionais Comuns
-- **Cadastro de Cartas:** O sistema deve permitir o cadastro de cartas com as informações necessárias.
-- **Comparação:** O sistema deve comparar as cartas e determinar a vencedora com base nas regras estabelecidas.
-- **Exibição de Resultados:** Os resultados devem ser exibidos de forma clara, indicando a carta vencedora.
+Superpoder = (população + área + PIB + pontos turísticos + PIB per capita) - densidade
 
-## 📌 Requisitos Não Funcionais Comuns
-- **Usabilidade:** A interface do usuário deve ser simples e intuitiva.
-- **Performance:** O sistema deve executar operações sem atrasos perceptíveis.
-- **Manutenibilidade:** O código deve ser bem estruturado e documentado.
-- **Confiabilidade:** O sistema deve ser robusto e capaz de lidar com entradas inválidas de forma adequada.
+O superpoder é exibido, mas não interfere diretamente na comparação final.
 
----
+📌 Exemplo de uso do menu
+mathematica
+Copiar
+Editar
+*** QUAL O PRIMEIRO ATRIBUTO SERÁ USADO PARA A COMPARAÇÃO? ***
+2 - População
 
-Boa sorte no desenvolvimento deste desafio e aproveite para aprender e se divertir enquanto progride pelos níveis!
+*** QUAL SERÁ O SEGUNDO ATRIBUTO USADO PARA A COMPARAÇÃO? ***
+4 - PIB
 
-Equipe de Ensino - MateCheck
+CARTA 01: POPULAÇÃO - 500000 /// CARTA 02: POPULAÇÃO - 450000
+CARTA 01: PIB - 120000.00 /// CARTA 02: PIB - 110000.00
+
+A CARTA 1 VENCE COM A PONTUAÇÃO TOTAL DE: 620000.00 PONTOS!
+👨‍💻 Autor
+Desenvolvido por [Seu Nome Aqui]
+Licença: MIT
