@@ -88,5 +88,4 @@ A CARTA 1 VENCE COM A PONTUAÇÃO TOTAL DE: 620000.00 PONTOS!
 
 ## 👨‍💻 Autor
 
-Desenvolvido por [Seu Nome Aqui]  
-Licença: MIT
+Desenvolvido por: Guilherme Coelho Marchiori (MarkyOfc)
